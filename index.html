@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EpigenSkin.com — Epigenetics, skin biology and personalized skincare</title>
+  <meta name="description" content="EpigenSkin.com: a platform focused on skin epigenetics, environmental influences, aging, personalized skincare, biomarkers and emerging research in skin biology.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://epigenskin.com/">
+
+  <!-- Google Analytics: add the specific GA4 Measurement ID for epigenskin.com here -->
+
+  <style>
+    :root{
+      --bg:#fbf9f7;
+      --card:#ffffff;
+      --text:#241f1c;
+      --muted:#736b65;
+      --primary:#a96f5d;
+      --primary-dark:#8b5748;
+      --border:#eee5df;
+      --soft:#f8efeb;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
+                  "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top right,rgba(169,111,93,.10),transparent 30rem),
+        linear-gradient(180deg,#fffdfb 0%,var(--bg) 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .container{width:min(1120px,calc(100% - 40px));margin:0 auto}
+
+    header{
+      padding:22px 0;
+      border-bottom:1px solid rgba(238,229,223,.9);
+      background:rgba(255,255,255,.84);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+
+    .brand{
+      font-weight:800;
+      font-size:1.22rem;
+      letter-spacing:-.035em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand span{color:var(--primary)}
+    .nav-actions{display:flex;align-items:center;gap:18px}
+
+    .nav-link{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.95rem;
+      font-weight:600;
+    }
+
+    .language-switch{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      padding:4px;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:10px;
+    }
+
+    .language-switch button{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font:inherit;
+      font-size:.82rem;
+      font-weight:800;
+      padding:6px 9px;
+      border-radius:7px;
+      cursor:pointer;
+    }
+
+    .language-switch button.active{background:var(--text);color:#fff}
+
+    .hero{
+      min-height:72vh;
+      display:flex;
+      align-items:center;
+      padding:80px 0 70px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border:1px solid #ead9d2;
+      background:var(--soft);
+      color:var(--primary);
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:700;
+      margin-bottom:22px;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.8rem);
+      line-height:.98;
+      letter-spacing:-.065em;
+      max-width:900px;
+    }
+
+    .hero p{
+      margin-top:26px;
+      font-size:1.18rem;
+      color:var(--muted);
+      max-width:730px;
+    }
+
+    .actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border-radius:12px;
+      padding:13px 20px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 10px 30px rgba(169,111,93,.18);
+    }
+
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    .btn-secondary:hover{border-color:#d8c9c2;transform:translateY(-1px)}
+
+    .preview{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 24px 70px rgba(75,50,40,.08);
+    }
+
+    .preview-top{display:flex;gap:7px;margin-bottom:24px}
+    .dot{width:9px;height:9px;border-radius:50%;background:#e3d9d4}
+
+    .mini-card{
+      padding:18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      margin-top:12px;
+      background:#fffdfb;
+    }
+
+    .mini-card strong{display:block;margin-bottom:4px}
+    .mini-card span{color:var(--muted);font-size:.92rem}
+
+    .section{padding:80px 0}
+
+    .section-title{
+      text-align:center;
+      max-width:800px;
+      margin:0 auto 42px;
+    }
+
+    .section-title h2{
+      font-size:clamp(2rem,4vw,3.2rem);
+      letter-spacing:-.045em;
+      line-height:1.05;
+    }
+
+    .section-title p{color:var(--muted);margin-top:14px}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:26px;
+    }
+
+    .icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:var(--soft);
+      display:grid;
+      place-items:center;
+      color:var(--primary);
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .card h3{font-size:1.1rem;margin-bottom:7px}
+    .card p{color:var(--muted);font-size:.95rem}
+
+    .cta{
+      margin:50px auto 80px;
+      background:var(--text);
+      color:#fff;
+      border-radius:24px;
+      padding:48px;
+      text-align:center;
+    }
+
+    .cta h2{
+      font-size:clamp(2rem,4vw,3rem);
+      letter-spacing:-.045em;
+    }
+
+    .cta p{color:#d8d0cb;margin-top:10px}
+
+    .note{
+      margin-top:14px;
+      color:#9c938e;
+      font-size:.82rem;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:800px){
+      .hero{min-height:auto;padding-top:60px}
+      .hero-grid{grid-template-columns:1fr;gap:38px}
+      .cards{grid-template-columns:1fr}
+      .preview{max-width:560px}
+      .nav-link{display:none}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="brand">Epigen<span>Skin</span></a>
+
+      <div class="nav-actions">
+        <a href="#about" class="nav-link" data-i18n="navAbout">About the project</a>
+
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" id="lang-en" class="active" onclick="setLanguage('en')">EN</button>
+          <button type="button" id="lang-es" onclick="setLanguage('es')">ES</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow" data-i18n="eyebrow">✦ Epigenetics · Skin · Personalized care</div>
+
+      <h1 data-i18n="heroTitle">Understanding how environment and biology shape the skin.</h1>
+
+      <p data-i18n="heroText">
+        EpigenSkin.com is designed as a platform for exploring the intersection of
+        epigenetics, skin biology, aging, environmental exposure, biomarkers and
+        personalized skincare.
+      </p>
+
+      <div class="actions">
+        <a href="#about" class="btn btn-primary" data-i18n="discover">Discover the project</a>
+        <a href="#coming" class="btn btn-secondary" data-i18n="comingSoon">Coming soon</a>
+      </div>
+    </div>
+
+    <div class="preview" aria-label="EpigenSkin">
+      <div class="preview-top">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+
+      <div class="mini-card">
+        <strong data-i18n="epigenetics">🧬 Skin epigenetics</strong>
+        <span data-i18n="epigeneticsText">Explore how gene regulation and epigenetic mechanisms relate to skin function and aging.</span>
+      </div>
+
+      <div class="mini-card">
+        <strong data-i18n="environment">☀️ Environment & lifestyle</strong>
+        <span data-i18n="environmentText">Understand the potential influence of UV exposure, pollution, stress and lifestyle on skin biology.</span>
+      </div>
+
+      <div class="mini-card">
+        <strong data-i18n="personalized">✨ Personalized skincare</strong>
+        <span data-i18n="personalizedText">Follow emerging approaches using biomarkers, data and individual characteristics to personalize skin care.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="sectionTitle">Where skin science meets epigenetics.</h2>
+
+      <p data-i18n="sectionText">
+        A knowledge platform focused on emerging research, mechanisms and technologies
+        linking skin health, aging and environmental influences.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="icon">01</div>
+        <h3 data-i18n="biology">Skin biology</h3>
+        <p data-i18n="biologyText">Explore barrier function, cellular processes, aging pathways and biological mechanisms relevant to skin.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">02</div>
+        <h3 data-i18n="biomarkers">Biomarkers & data</h3>
+        <p data-i18n="biomarkersText">Follow research into molecular markers, epigenetic signatures and data-driven skin assessment.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">03</div>
+        <h3 data-i18n="innovation">Cosmetic innovation</h3>
+        <p data-i18n="innovationText">Track emerging ingredients, formulations, testing approaches and personalized cosmetic technologies.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="coming">
+  <div class="cta">
+    <h2 data-i18n="ctaTitle">We are building EpigenSkin.com</h2>
+    <p data-i18n="ctaText">Research summaries, concepts and resources on skin epigenetics and personalized skincare will be available soon.</p>
+    <div class="note" data-i18n="note">Informational content only. Not medical or dermatological advice.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <strong>EpigenSkin.com</strong>
+    <span>© 2026 EpigenSkin.com</span>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  en:{
+    pageTitle:"EpigenSkin.com — Epigenetics, skin biology and personalized skincare",
+    description:"EpigenSkin.com: a platform focused on skin epigenetics, environmental influences, aging, personalized skincare, biomarkers and emerging research in skin biology.",
+    navAbout:"About the project",
+    eyebrow:"✦ Epigenetics · Skin · Personalized care",
+    heroTitle:"Understanding how environment and biology shape the skin.",
+    heroText:"EpigenSkin.com is designed as a platform for exploring the intersection of epigenetics, skin biology, aging, environmental exposure, biomarkers and personalized skincare.",
+    discover:"Discover the project",
+    comingSoon:"Coming soon",
+    epigenetics:"🧬 Skin epigenetics",
+    epigeneticsText:"Explore how gene regulation and epigenetic mechanisms relate to skin function and aging.",
+    environment:"☀️ Environment & lifestyle",
+    environmentText:"Understand the potential influence of UV exposure, pollution, stress and lifestyle on skin biology.",
+    personalized:"✨ Personalized skincare",
+    personalizedText:"Follow emerging approaches using biomarkers, data and individual characteristics to personalize skin care.",
+    sectionTitle:"Where skin science meets epigenetics.",
+    sectionText:"A knowledge platform focused on emerging research, mechanisms and technologies linking skin health, aging and environmental influences.",
+    biology:"Skin biology",
+    biologyText:"Explore barrier function, cellular processes, aging pathways and biological mechanisms relevant to skin.",
+    biomarkers:"Biomarkers & data",
+    biomarkersText:"Follow research into molecular markers, epigenetic signatures and data-driven skin assessment.",
+    innovation:"Cosmetic innovation",
+    innovationText:"Track emerging ingredients, formulations, testing approaches and personalized cosmetic technologies.",
+    ctaTitle:"We are building EpigenSkin.com",
+    ctaText:"Research summaries, concepts and resources on skin epigenetics and personalized skincare will be available soon.",
+    note:"Informational content only. Not medical or dermatological advice."
+  },
+
+  es:{
+    pageTitle:"EpigenSkin.com — Epigenética, biología de la piel y cosmética personalizada",
+    description:"EpigenSkin.com: plataforma centrada en epigenética de la piel, factores ambientales, envejecimiento, cosmética personalizada, biomarcadores e investigación emergente.",
+    navAbout:"Sobre el proyecto",
+    eyebrow:"✦ Epigenética · Piel · Cuidado personalizado",
+    heroTitle:"Entender cómo el entorno y la biología influyen en la piel.",
+    heroText:"EpigenSkin.com nace como una plataforma para explorar la intersección entre epigenética, biología de la piel, envejecimiento, exposición ambiental, biomarcadores y cuidado personalizado.",
+    discover:"Descubrir el proyecto",
+    comingSoon:"Próximamente",
+    epigenetics:"🧬 Epigenética de la piel",
+    epigeneticsText:"Explora cómo la regulación genética y los mecanismos epigenéticos se relacionan con la función y el envejecimiento de la piel.",
+    environment:"☀️ Entorno y estilo de vida",
+    environmentText:"Analiza la posible influencia de la exposición UV, contaminación, estrés y estilo de vida sobre la biología cutánea.",
+    personalized:"✨ Cuidado personalizado",
+    personalizedText:"Sigue enfoques emergentes que utilizan biomarcadores, datos y características individuales para personalizar el cuidado de la piel.",
+    sectionTitle:"Donde la ciencia de la piel se encuentra con la epigenética.",
+    sectionText:"Una plataforma de conocimiento centrada en investigación, mecanismos y tecnologías emergentes que relacionan salud cutánea, envejecimiento e influencias ambientales.",
+    biology:"Biología de la piel",
+    biologyText:"Explora función barrera, procesos celulares, vías de envejecimiento y mecanismos biológicos relevantes para la piel.",
+    biomarkers:"Biomarcadores y datos",
+    biomarkersText:"Sigue la investigación sobre marcadores moleculares, firmas epigenéticas y evaluación de la piel basada en datos.",
+    innovation:"Innovación cosmética",
+    innovationText:"Conoce ingredientes, formulaciones, métodos de evaluación y tecnologías emergentes para cosmética personalizada.",
+    ctaTitle:"Estamos preparando EpigenSkin.com",
+    ctaText:"Próximamente encontrarás resúmenes de investigación, conceptos y recursos sobre epigenética de la piel y cosmética personalizada.",
+    note:"Contenido exclusivamente informativo. No constituye consejo médico ni dermatológico."
+  }
+};
+
+function setLanguage(lang){
+  const t = translations[lang] || translations.en;
+
+  document.documentElement.lang = lang;
+  document.title = t.pageTitle;
+
+  const meta = document.querySelector('meta[name="description"]');
+  if(meta) meta.setAttribute("content", t.description);
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(t[key]) el.textContent = t[key];
+  });
+
+  document.getElementById("lang-en").classList.toggle("active", lang==="en");
+  document.getElementById("lang-es").classList.toggle("active", lang==="es");
+
+  localStorage.setItem("epigenskin-language", lang);
+}
+
+const savedLanguage = localStorage.getItem("epigenskin-language");
+const browserLanguage = (navigator.language || "").toLowerCase();
+
+let initialLanguage = "en";
+if(browserLanguage.startsWith("es")) initialLanguage = "es";
+
+setLanguage(savedLanguage || initialLanguage);
+</script>
+</body>
+</html>
